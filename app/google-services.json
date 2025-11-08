@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "620563750717",
+    "project_id": "opportune-cd826",
+    "storage_bucket": "opportune-cd826.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620563750717:android:bb0db9c2fc0a70c1b32f54",
+        "android_client_info": {
+          "package_name": "com.example.opportune"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAmenbyuxGdPkMWG27Uy1ZJPQVs4UdKFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
