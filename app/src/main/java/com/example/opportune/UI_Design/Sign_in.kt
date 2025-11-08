@@ -1,51 +1,40 @@
-package com.example.opportune
+package com.example.opportune.UI_Design
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.opportune.databinding.ActivitySignUpBinding
+import com.example.opportune.Chat_screen
+import com.example.opportune.UI_Design.Sign_up
+import com.example.opportune.databinding.ActivitySignInBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
-class Sign_up : AppCompatActivity() {
-    private lateinit var binding: ActivitySignUpBinding
+class Sign_in : AppCompatActivity() {
+    private lateinit var binding: ActivitySignInBinding
     private var auth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //intent to signIn activity
-        binding.btnGoToSignIn.setOnClickListener {
-            startActivity(Intent(this, Sign_in::class.java))
+        binding.btnGoToSignUp.setOnClickListener {
+            startActivity(Intent(this, Sign_up::class.java))
             finish()
         }
-
-        signUpValidation()
-
-
+        signInValidation()
     }
 
-
-
-
-
-    fun signUpValidation() {
-        binding.btnSignUp.setOnClickListener {
+    fun signInValidation() {
+        binding.btnSignIn.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
-            val confirmPassword = binding.etConfirmPassword.text.toString().trim()
 
-            // Email & Password Regex Patterns
+            // Email Regex Pattern
             val emailPattern = Regex("^[A-Za-z0-9._%+-]+@dipti\\.com\\.bd$")
-            val passwordPattern =
-                Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$")
 
             when {
-                email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() -> {
+                email.isEmpty() || password.isEmpty() -> {
                     Snackbar.make(binding.root, "All fields are required", Snackbar.LENGTH_SHORT)
                         .show()
                 }
@@ -58,33 +47,20 @@ class Sign_up : AppCompatActivity() {
                     ).show()
                 }
 
-                !password.matches(passwordPattern) -> {
-                    Snackbar.make(
-                        binding.root,
-                        "Password must contain at least 8 characters with uppercase, lowercase, number & special character",
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                }
-
-                password != confirmPassword -> {
-                    Snackbar.make(binding.root, "Passwords do not match", Snackbar.LENGTH_SHORT)
-                        .show()
-                }
-
                 else -> {
-                    auth.createUserWithEmailAndPassword(email, password)
+                    auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
                                 Snackbar.make(
                                     binding.root,
-                                    "User created successfully",
+                                    "Sign in successful",
                                     Snackbar.LENGTH_SHORT
                                 ).show()
                                 startActivity(Intent(this, Chat_screen::class.java))
                                 finish()
                             } else {
                                 val errorMessage =
-                                    task.exception?.message ?: "Failed to create user"
+                                    task.exception?.message ?: "Failed to sign in"
                                 Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_LONG)
                                     .show()
                             }
@@ -93,4 +69,5 @@ class Sign_up : AppCompatActivity() {
             }
         }
     }
+
 }

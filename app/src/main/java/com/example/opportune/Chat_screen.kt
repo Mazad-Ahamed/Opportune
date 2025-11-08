@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.opportune.UI_Design.Sign_in
 import com.example.opportune.databinding.ActivityChatScreenBinding
 import com.google.firebase.auth.FirebaseAuth
 
