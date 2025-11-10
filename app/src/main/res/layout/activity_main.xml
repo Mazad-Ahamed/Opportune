@@ -12,6 +12,7 @@
 
 
 
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomnavber"
             android:layout_width="match_parent"

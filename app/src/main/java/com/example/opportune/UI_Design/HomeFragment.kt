@@ -1,24 +1,19 @@
 package com.example.opportune.UI_Design
 
-import android.animation.ObjectAnimator
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.opportune.Adapters.JobAdapter
+import com.example.opportune.Adapters.JobONEAdapter
 import com.example.opportune.Data.JobItem
-import com.example.opportune.R
 import com.example.opportune.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapter: JobAdapter
+    private lateinit var adapter: JobONEAdapter
     private lateinit var joblist : List<JobItem>
 
     override fun onCreateView(
@@ -30,7 +25,7 @@ class HomeFragment : Fragment() {
 
         loaddata()
 
-        adapter = JobAdapter(joblist)
+        adapter = JobONEAdapter(joblist)
 
 
         binding.recentjobRecycler.apply {

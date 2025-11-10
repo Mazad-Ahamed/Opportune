@@ -14,8 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Opportune">
         <activity
+            android:name=".Add_NewJob_Activity"
+            android:exported="false" />
+        <activity
             android:name=".UI_Design.Intro_Activity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,9 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

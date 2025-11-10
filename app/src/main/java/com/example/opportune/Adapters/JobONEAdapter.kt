@@ -7,10 +7,10 @@ import com.example.opportune.Data.JobItem
 import com.example.opportune.databinding.RecyclerItemTwoBinding
 
 
-class JobAdapter(
+class JobONEAdapter(
     private val jobList: List<JobItem>,
   //  private val onCallClick: (String) -> Unit
-) : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
+) : RecyclerView.Adapter<JobONEAdapter.JobViewHolder>() {
 
     inner class JobViewHolder(val binding: RecyclerItemTwoBinding ) :
         RecyclerView.ViewHolder(binding.root)
