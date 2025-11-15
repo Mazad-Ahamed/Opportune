@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Opportune">
         <activity
+            android:name=".Data.detais"
+            android:exported="false" />
+        <activity
             android:name=".Add_NewJob_Activity"
             android:exported="false" />
         <activity
@@ -36,7 +39,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
