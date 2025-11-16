@@ -72,6 +72,7 @@
 
 
     <ImageView
+        android:id="@+id/button"
         android:layout_width="289dp"
         android:layout_height="169dp"
         android:src="@drawable/bottom_intro"

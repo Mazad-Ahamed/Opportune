@@ -13,7 +13,7 @@ import com.example.opportune.Data.JobEntity
 import com.example.opportune.Data.JobItem
 import com.example.opportune.Data.JobViewModel
 import com.example.opportune.Data.detais
-import com.example.opportune.SugAdapter
+//import com.example.opportune.SugAdapter
 import com.example.opportune.databinding.FragmentHomeBinding
 import kotlin.getValue
 
@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
 
     private  var joblistone : List<JobEntity> = emptyList()
 
-    private lateinit var AdapterOne : SugAdapter
+  //  private lateinit var AdapterOne : SugAdapter
 
 
 
@@ -37,18 +37,18 @@ class HomeFragment : Fragment() {
      binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         loaddata()
-AdapterOne = SugAdapter(joblistone){selectedArticle ->
+/*AdapterOne = SugAdapter(joblistone){selectedArticle ->
     val intent =
         Intent(requireContext(), detais::class.java)
     intent.putExtra("NewsData", selectedArticle)
-    startActivity(intent)
+   startActivity(intent)
 }
 
         binding.SuggestedjobRecycler.apply {
-            layoutManager=
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
-                adapter = this@HomeFragment.AdapterOne
-        }
+           layoutManager=
+               LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
+               adapter = this@HomeFragment.AdapterOne
+        }*/
 
 
 

@@ -26,9 +26,12 @@ class JobAdapter(
     override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
         val job = jobList[position]
         with(holder.binding) {
-            tvCompanyName.text = job.CP_name
-            tvJobTitle.text = job.job_name
-            tvLocation.text = job.Location
+            company.text = job.CP_name
+            title.text = job.job_name
+            location.text = job.Location
+            tagTime.text = "${ job.W_Hour }Hour"
+            tagModel.text = "${job.Days}days in a week"
+            salary.text = job.Salary
 
             btnEdit.setOnClickListener { onEditClick(job) }
             btnDelete.setOnClickListener { onDeleteClick(job) }

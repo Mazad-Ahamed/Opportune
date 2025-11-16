@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opportune.Data.JobEntity
 import com.example.opportune.databinding.RecyclerItemOneBinding
 
-class SugAdapter(private val joblistone : List<JobEntity>,
+/*class SugAdapter(private val joblistone : List<JobEntity>,
                  private val setonClick: (JobEntity) -> Unit
     ) : RecyclerView.Adapter<SugAdapter.sugViewHolder> (){
     class sugViewHolder(val binding: RecyclerItemOneBinding): RecyclerView.ViewHolder(binding.root)
@@ -39,4 +39,4 @@ class SugAdapter(private val joblistone : List<JobEntity>,
     override fun getItemCount(): Int {
         return joblistone.size
     }
-}
+}*/
