@@ -13,6 +13,7 @@ import com.example.opportune.Data.JobEntity
 import com.example.opportune.Data.JobItem
 import com.example.opportune.Data.JobViewModel
 import com.example.opportune.Data.detais
+import com.example.opportune.SugAdapter
 //import com.example.opportune.SugAdapter
 import com.example.opportune.databinding.FragmentHomeBinding
 import kotlin.getValue
@@ -23,49 +24,47 @@ class HomeFragment : Fragment() {
     private lateinit var Aadapter: JobONEAdapter
     private lateinit var joblist : List<JobItem>
 
-    private  var joblistone : List<JobEntity> = emptyList()
+    private var joblistone: List<JobEntity> = emptyList()   // <-- FIXED
 
-  //  private lateinit var AdapterOne : SugAdapter
+    private lateinit var AdapterOne: SugAdapter
 
-
-
+    private val jobViewModel: JobViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-     binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         loaddata()
-/*AdapterOne = SugAdapter(joblistone){selectedArticle ->
-    val intent =
-        Intent(requireContext(), detais::class.java)
-    intent.putExtra("NewsData", selectedArticle)
-   startActivity(intent)
-}
+
+        // initialize suggested jobs adapter
+        AdapterOne = SugAdapter(joblistone)
 
         binding.SuggestedjobRecycler.apply {
-           layoutManager=
-               LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL,false)
-               adapter = this@HomeFragment.AdapterOne
-        }*/
-
-
-
-
-
-
-
-
-        Aadapter = JobONEAdapter(joblist)
-
-        binding.recentjobRecycler.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            adapter = this@HomeFragment.Aadapter
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter = this@HomeFragment.AdapterOne
+        }
+        jobViewModel.alljobs.observe(viewLifecycleOwner) { jobs ->
+            AdapterOne.updateData(jobs)
         }
 
 
+        // initialize recent jobs
+        Aadapter = JobONEAdapter(joblist)
+
+        binding.recentjobRecycler.apply {
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+            )
+            adapter = this@HomeFragment.Aadapter
+        }
 
         return binding.root
     }
